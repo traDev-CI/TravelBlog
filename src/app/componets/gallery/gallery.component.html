@@ -1,0 +1,62 @@
+<div class="containerC">
+  <nav>
+    <ul #filterList id="filterList" class="myBtnContainer">
+      <li #value class="btn" data-target="all" (click)="filterPosts('all')">
+        All
+      </li>
+      <li
+        #value
+        class="btn active"
+        data-target="lifestyle"
+        (click)="filterPosts('lifestyle')"
+      >
+        Lifestyle
+      </li>
+      <li
+        #value
+        class="btn"
+        data-target="business"
+        (click)="filterPosts('business')"
+      >
+        Bussiness
+      </li>
+      <li #value class="btn" data-target="woods" (click)="filterPosts('woods')">
+        Woods
+      </li>
+      <li
+        #value
+        class="btn"
+        data-target="winter"
+        (click)="filterPosts('winter')"
+      >
+        Winter
+      </li>
+      <li
+        #value
+        class="btn"
+        data-target="winter"
+        (click)="filterPosts('travel')"
+      >
+        Travel
+      </li>
+    </ul>
+  </nav>
+</div>
+<div #listCategory id="listCategory" class="categories">
+  <div
+    class="card text-white"
+    *ngFor="let post of posts | myfilter: mainFilter"
+  >
+    <img class="card-img" src="{{ post.image }}" alt="Card image" />
+    <div class="card-img-overlay">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <span class="card-text">{{post.comments}} comments</span>
+      <p class="card-text">{{ post.shortDescription }}</p>
+      <div class="editClass">
+        <h6 class="card-text" id="category">{{ post.category }}</h6>
+        <app-editPost [id]="post.id" [title]="post.title" [category]="post.category" [urlImage]="post.image" [description]="post.shortDescription" ></app-editPost>
+      </div>
+    </div>
+  </div>
+</div>
+<div></div>
